@@ -5,18 +5,6 @@ from cryptography.fernet import Fernet, InvalidToken, InvalidSignature
 
 
 
-def generate_key():
-    return Fernet.generate_key()
-
-
-def generate_license(data, secret_key: str):
-    cipher_suite = Fernet(secret_key)
-    license_str = json.dumps(data)
-    encoded_text = cipher_suite.encrypt(license_str.encode('utf-8'))
-    # return encoded_text.hex()
-    return base64.urlsafe_b64encode(encoded_text).decode('utf-8')
-
-
 def decode_license(license_key: str, secret_key: str) -> dict:
     try:
         cipher_suite = Fernet(secret_key)

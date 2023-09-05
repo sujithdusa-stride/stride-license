@@ -1,1 +1,1 @@
-from license import generate_license, decode_license, generate_key, get_license_status
+from license import decode_license, get_license_status
